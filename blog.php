@@ -1,26 +1,49 @@
 <?php
-$pdo = new PDO(
-    "mysql:host=localhost;dbname=epic;charset=utf8", "root", "vagrant"
-);
-$statement = $pdo->query(
-    "SELECT * FROM posts"
-);
-$pdo->query(
-    "INSERT INTO posts SET  `title` ='{$_GET['title']}', `user_id` ={$_GET['user_id']}"
-);
-//while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-// echo htmlentities($row["id"]);
-//};
-$row = $statement->fetchAll(PDO::FETCH_ASSOC);
-var_dump($_GET);
-var_dump($_POST);
+error_reporting(E_ALL);
+$connection = new \PDO("mysql:host=localhost;dbname=epic", 'root', 'vagrant', [
+    \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+    \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+    \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
+]);
+
+if (!empty($_GET['message'])) {
+    $a = $connection->prepare("INSERT INTO `posts` SET `message`=:message, `title` = :title,`date`=NOW(), `user_id`=0");
+    $a->execute([
+        ':message' => $_GET['message'],
+        ':title' => $_GET['title'],
+    ]);
+}
+$messages = $connection->query('SELECT p.`title`,p.`date`,p.`message` FROM `posts`  p LEFT JOIN `users`  u ON p.`user_id`= u.`id` ORDER BY  p.`date` DESC')->fetchAll();
 ?>
-<?php if (!empty($row)): ?>
-    <?php foreach ($row as $message): ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>epic blog</title>
+    <style type="text/css">
+        body {
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .left {
+            float: left;
+        }
+        .right {
+            float: right;
+        }
+        .message {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<?php if (!empty($messages)): ?>
+    <?php foreach ($messages as $message): ?>
         <div class="message">
             <div><?= $message['title']; ?></div>
-            <span class="left"><?= $message['user_id']; ?></span>
-            <span class="right"><?= $message['date']; ?></span>
+            <span class="left"><?= $message['message']; ?></span>
+            <span class="right"><?= "Добавлено:  ".$message['date']; ?></span>
         </div>
         <br/>
     <?php endforeach ?>
@@ -30,5 +53,4 @@ var_dump($_POST);
     <input type="text" name="message">
     <input type="submit">
 </form>
-
 
