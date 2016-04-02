@@ -5,12 +5,12 @@
  * Date: 30.03.2016
  * Time: 21:59
  */
-error_reporting(E_ALL);
-$connection = new \PDO("mysql:host=localhost;dbname=epic", 'root', 'vagrant', [
-    \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-    \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
-    \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
-]);
+session_start();
+ini_set('display_errors', 1);
+require "functions.php";
+$connection = connection(['host' => 'localhost', 'dbname' => 'epic', 'user' => 'root', 'password' => 'vagrant', 'encoding' => 'utf8']);
+$token = token();
+
 if (!empty($_POST['login'])) {
     $a = $connection->prepare('SELECT * FROM `users` WHERE `login` = :login AND `password`=:password');
     $a->execute([
@@ -23,8 +23,10 @@ if (!empty($_POST['login'])) {
     } else {header("Location: blog.php");}
 }
 ?>
+
 <form action="login.php" method="POST">
     <input type="text" name="login">
     <input type="password" name="password">
+    <input type ="hidden" name ="token" value = <?php echo $token ?>>
     <input type="submit">
 </form>
