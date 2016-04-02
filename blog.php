@@ -2,11 +2,7 @@
 require "functions.php";
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-$connection = new \PDO("mysql:host=localhost;dbname=epic", 'root', 'vagrant', [
-    \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-    \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
-    \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
-]);
+$connection = connection(['host' => 'localhost', 'dbname' => 'epic', 'user' => 'root', 'password' => 'vagrant', 'encoding' => 'utf8']);
 
 if (!empty($_GET['message'])) {
     $a = $connection->prepare("INSERT INTO `posts` SET `message`=:message, `title` = :title,`date`=NOW(), `user_id`=0");
