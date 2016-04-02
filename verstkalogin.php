@@ -5,6 +5,7 @@
 <title>Login</title>
 </head>
 <body>
+<h3> Введите логин и пароль</h3>
 <form action="login.php" method="POST">
     <input type="text" name="login">
     <input type="password" name="password">
