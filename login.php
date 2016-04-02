@@ -11,21 +11,20 @@ $connection = new \PDO("mysql:host=localhost;dbname=epic", 'root', 'vagrant', [
     \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
     \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
 ]);
-if (!empty($_GET['login'])) {
+if (!empty($_POST['login'])) {
     $a = $connection->prepare('SELECT * FROM `users` WHERE `login` = :login AND `password`=:password');
-    var_dump($a->execute([
-            ':login' => $_GET['login'],
-            ':password' => md5($_GET['password']),
+    $a->execute([
+            ':login' => $_POST['login'],
+            ':password' => md5($_POST['password']),
         ]
-    ));
-    var_dump($a->queryString);
-    var_dump($a->fetch());
-    var_dump(md5($_GET['password']));
-    var_dump($_GET['login']);
+    );
+    if(!($a->fetch())){
+        echo "Неправильный логин или пароль";
+    } else {header("Location: blog.php");}
 }
 ?>
-<form action="login.php" method="GET">
+<form action="login.php" method="POST">
     <input type="text" name="login">
-    <input type="text" name="password">
+    <input type="password" name="password">
     <input type="submit">
 </form>
