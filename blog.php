@@ -19,7 +19,7 @@ $messages = $connection->query('SELECT p.`title`,p.`date`,p.`message` FROM `post
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>epic blog</title>
+    <title>Blog</title>
     <style type="text/css">
         body {
             width: 60%;
@@ -42,7 +42,7 @@ $messages = $connection->query('SELECT p.`title`,p.`date`,p.`message` FROM `post
     <?php foreach ($messages as $message): ?>
         <div class="message">
             <div><?= $message['title']; ?></div>
-            <span class="left"><?= $message['message']; ?></span>
+            <span class="left"><?= htmlspecialchars($message['message']); ?></span>
             <span class="right"><?= "Добавлено:  ".$message['date']; ?></span>
         </div>
         <br/>
