@@ -18,9 +18,11 @@ if (!empty($_POST['login']) && $_REQUEST['token'] == $_SESSION['token']) {
             ':password' => md5($_POST['password']),
         ]
     );
-    if(!($a->fetch())){
+    $user = $a->fetch();
+    if(!$user ){
         echo "Неправильный логин или пароль";
-    } else {header("Location: blog.php");}
+    } else {$_SESSION['user'] = $user;
+        header("Location: blog.php");}
 }
 
 echo template("verstkalogin.php",[
