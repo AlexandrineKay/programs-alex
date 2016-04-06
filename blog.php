@@ -21,7 +21,7 @@ $query->execute([
 ]);}
 if (empty($user)) {
    header("Location:login.php" );}
-$messages = $connection->query('SELECT p.`title`,p.`date`,p.`message` FROM `posts`  p   ORDER BY  p.`date` DESC' )->fetchAll();
+$messages = $connection->query("SELECT p.`title`,p.`date`,p.`message` FROM `posts`  p  WHERE p.`user_id` = {$user['id']} ORDER BY  p.`date` DESC")->fetchAll();
 echo template("verstka.php",[
 'messages' => $messages,]);
 
