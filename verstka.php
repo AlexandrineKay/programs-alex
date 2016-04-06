@@ -40,7 +40,7 @@
 <form action ='blog.php' method="POST">
     <p> Назовите ваш пост:</p>
     <input type="text" name="title">
-    <p>Ваше сообщение:</p><textarea cols="50" rows="10" ></textarea>
+    <p>Ваше сообщение:</p><textarea name="message" id="message" cols="50" rows="10" ></textarea>
     <input type="submit" name="action" value="send">
 </form>
 </body>
