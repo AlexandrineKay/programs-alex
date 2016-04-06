@@ -45,3 +45,26 @@ function token()
     $_SESSION['token'] = $token;
     return $token;
 }
+function template($name, array $vars = [])
+{
+    if (!is_file($name)) {
+        throw new exception("Could not load template file {$name}");
+    }
+    ob_start();
+    extract($vars);
+    require($name);
+    $contents = ob_get_contents();
+    ob_end_clean();
+    return $contents;
+}
+function update_message(\PDO $connection, $message, $message_id)
+{
+    if (empty($message)) {
+        return false;
+    }
+    $query = $connection->prepare('UPDATE `posts` SET `message`=:message WHERE `id`=:message_id');
+    return $query->execute([
+        'message' => $message,
+        'message_id' => $message_id
+    ]);
+}

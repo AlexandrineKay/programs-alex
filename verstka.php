@@ -8,6 +8,10 @@
     width: 60%;
     margin-left: auto;
             margin-right: auto;
+    TEXTAREA {
+        width: 100%;
+        height: 100px;
+    }
         }
         .left {
     float: left;
@@ -17,10 +21,12 @@
 }
         .message {
     margin-bottom: 20px;
+            border: 2px;
         }
     </style>
 </head>
 <body>
+<h1 align="center"> Добро пожаловать в блог! </h1>
 <?php if (!empty($messages)): ?>
     <?php foreach ($messages as $message): ?>
         <div class="message">
@@ -31,10 +37,11 @@
         <br/>
     <?php endforeach ?>
 <?php endif ?>
-<form action="blog.php" method="GET">
+<form action ='blog.php' method="POST">
+    <p> Назовите ваш пост:</p>
     <input type="text" name="title">
-    <input type="text" name="message">
-    <input type="submit">
+    <p>Ваше сообщение:</p><textarea cols="50" rows="10" ></textarea>
+    <input type="submit" name="action" value="send">
 </form>
 </body>
 </html>
