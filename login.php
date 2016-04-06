@@ -19,6 +19,7 @@ if (!empty($_POST['login']) && $_REQUEST['token'] == $_SESSION['token']) {
         ]
     );
     $user = $a->fetch();
+    //if (!empty($user)) {
     if(!$user ){
         echo "Неправильный логин или пароль";
     } else {$_SESSION['user'] = $user;
