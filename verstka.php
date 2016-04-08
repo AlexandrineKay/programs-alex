@@ -20,7 +20,7 @@
     float: right;
 }
         .message {
-    margin-bottom: 20px;
+    margin-bottom: 50px;
             border: 2px;
         }
     </style>
