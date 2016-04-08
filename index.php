@@ -17,13 +17,11 @@ switch ($action) {
                 ]
             );
             $user = $a->fetch();
-            //if (!empty($user)) {
             if(!$user ){
                 echo "Неправильный логин или пароль";
             } else {$_SESSION['user'] = $user;
                 header("Location: index.php");}
         }
-
         echo template("verstkalogin.php",[
             'token' => token(),]);
         break;
