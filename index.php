@@ -27,21 +27,14 @@ switch ($action) {
         break;
         case 'post':
         if (!empty($_POST['message'])) {
-            $a = $connection->prepare("INSERT INTO `posts` SET `message`=:message, `title` = :title,`date`=NOW(), `user_id`={$user['id']} ");
+            $a = $connection->prepare("INSERT INTO `posts` SET `message`=:message, `date`=NOW(), `user_id`={$user['id']} ");
             $a->execute([
                 ':message' => $_POST['message'],
-                ':title' => $_POST['title'],
             ]);
         }
-        if (!empty($_POST['title'])) {
-        $query = $connection->prepare('UPDATE `posts` SET `message`=:message WHERE `title`=:title');
-        $query->execute([
-        ':message' => $_POST['message'],
-        ':title' =>  $_POST['title'],
-        ]);}
         if (empty($user)) {
         header("Location:index.php?action=login" );}
-        $messages = $connection->query("SELECT p.`title`,p.`date`,p.`message` FROM `posts`  p  WHERE p.`user_id` = {$user['id']} ORDER BY  p.`date` DESC")->fetchAll();
+        $messages = $connection->query("SELECT p.`date`,p.`message`, p.`id` FROM `posts`  p  WHERE p.`user_id` = {$user['id']} ORDER BY  p.`date` DESC")->fetchAll();
             echo template("verstka.php",[
            'messages' => $messages,]);
         break;}

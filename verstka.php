@@ -30,18 +30,18 @@
 <?php if (!empty($messages)): ?>
     <?php foreach ($messages as $message): ?>
         <div class="message">
-            <div><?= $message['title']; ?></div>
-            <span class="left"><?= htmlspecialchars($message['message']); ?></span>
-            <span class="right"><?= "Добавлено:  ".$message['date']; ?></span>
+            <a href="index.php?action=show&message_id"<?= $message['id'] ?>"><h2>message № <?= $message['id'] ?></h2></a>
+            <div><?= htmlspecialchars($message['message']); ?></div>
+            <span class="right"><?= $message['date']; ?></span>
         </div>
-        <br/>
     <?php endforeach ?>
 <?php endif ?>
+
 <form action ='index.php?action=post' method="POST">
-    <p> Назовите ваш пост:</p>
-    <input type="text" name="title">
-    <p>Ваше сообщение:</p><textarea name="message" id="message" cols="50" rows="10" ></textarea>
-    <input type="submit" name="action" value="send">
+    <textarea name="message" id="message" rows="10"><?= empty($message_id) ? '' : $messages[0]['message'] ?></textarea>
+    <input type="hidden" name="message_id" value="<?= $message_id ?>">
+    <input type="submit" name="action" value="save">
+    <input type="hidden" name="token" value="<?= $token ?>">
 </form>
 </body>
 </html>
