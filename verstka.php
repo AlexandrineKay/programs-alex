@@ -30,7 +30,7 @@
 <?php if (!empty($messages)): ?>
     <?php foreach ($messages as $message): ?>
         <div class="message">
-            <a href="index.php?action=show&message_id"<?= $message['id'] ?>"><h2>message № <?= $message['id'] ?></h2></a>
+            <a href="index.php?action=show&message_id"<?= $message['id'] ?>"><h2>Message № <?= $message['id'] ?></h2></a>
             <div><?= htmlspecialchars($message['message']); ?></div>
             <span class="right"><?= $message['date']; ?></span>
         </div>
@@ -38,7 +38,7 @@
 <?php endif ?>
 
 <form action ='index.php?action=post' method="POST">
-    <textarea name="message" id="message" rows="10"><?= empty($message_id) ? '' : $messages[0]['message'] ?></textarea>
+    <textarea name="message" id="message" cols = "50" rows="10"><?= empty($message_id) ? '' : $messages[0]['message'] ?></textarea>
     <input type="hidden" name="message_id" value="<?= $message_id ?>">
     <input type="submit" name="action" value="save">
     <input type="hidden" name="token" value="<?= $token ?>">

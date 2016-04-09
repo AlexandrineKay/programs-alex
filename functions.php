@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: 805299
- * Date: 02.04.2016
- * Time: 14:02
- */
+
 function connection(array $config)
 {
     return new \PDO("mysql:host={$config['host']};dbname={$config['dbname']}", $config['user'], $config['password'], [
@@ -36,9 +31,7 @@ function user(\PDO $connection = null, $login = null, $password = null)
     }
     return $user;
 }
-/**
- * @return string
- */
+
 function token()
 {
     $token = uniqid();

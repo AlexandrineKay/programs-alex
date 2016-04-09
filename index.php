@@ -4,7 +4,6 @@ require "functions.php";
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 $connection = connection(['host' => 'localhost', 'dbname' => 'epic', 'user' => 'root', 'password' => 'vagrant', 'encoding' => 'utf8']);
-//$user = $_SESSION['user'];
 $user = user();
 $action = empty($_GET['action']) ? 'post' : $_GET['action'];
 switch ($action) {
