@@ -8,10 +8,12 @@ function connection(array $config)
         \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES {$config['encoding']}"
     ]);
 }
+
 function valid_token($token)
 {
     return !empty($_SESSION['token']) && $token == $_SESSION['token'];
 }
+
 function user(\PDO $connection = null, $login = null, $password = null)
 {
     if (!empty($_SESSION['user'])) {
@@ -38,6 +40,7 @@ function token()
     $_SESSION['token'] = $token;
     return $token;
 }
+
 function template($name, array $vars = [])
 {
     if (!is_file($name)) {
@@ -50,6 +53,7 @@ function template($name, array $vars = [])
     ob_end_clean();
     return $contents;
 }
+
 function update_message(\PDO $connection, $message, $message_id)
 {
     if (empty($message)) {
@@ -59,25 +63,31 @@ function update_message(\PDO $connection, $message, $message_id)
     return $query->execute([
         'message' => $message,
         'message_id' => $message_id
-    ]);}
+    ]);
+}
 
-function insert_message(\PDO $connection)
-{if (!empty($_POST['message'])) {
-        $a = $connection->prepare("INSERT INTO `posts` SET `message`=:message, `title` = :title,`date`=NOW(), `user_id`='user_id' ");
-      $a->execute([
-        ':message' => $_POST['message'],
-           ]);
-}}
+function insert_message(\PDO $connection, $message, $user)
+{
+    if (!empty($message)) {
+        $a = $connection->prepare("INSERT INTO `posts` SET `message`=:message, `date`=NOW(), `user_id`=:user_id ");
+        $a->execute([
+            ':message' => $message,
+            ':user_id' => $user[`id`],
+        ]);
+    }
+    var_dump("insert message");
+}
+
 function load_messages(\PDO $connection, $message_id = null)
-    {
-        $user = user();
-        if ($message_id !== null) {
-            $message_id = (int)$message_id;
-        }
-        return
-            $message_id === null
-                ? $connection->query("SELECT p.`date`,p.`message`, p.`id` FROM `posts`  p  WHERE p.`user_id` = {$user['id']} ORDER BY  p.`date` DESC")->fetchAll()
-                : $connection->query("SELECT p.`date`,p.`message`,p.`id` FROM `posts` p WHERE p.`id`={$message_id} ORDER BY p.`date` DESC")->fetchAll();
+{
+    $user = user();
+    if ($message_id !== null) {
+        $message_id = (int)$message_id;
+    }
+    return
+        $message_id === null
+            ? $connection->query("SELECT p.`date`,p.`message`, p.`id` FROM `posts`  p  WHERE p.`user_id` = {$user['id']} ORDER BY  p.`date` DESC")->fetchAll()
+            : $connection->query("SELECT p.`date`,p.`message`,p.`id` FROM `posts` p WHERE p.`id`={$message_id} ORDER BY p.`date` DESC")->fetchAll();
 
 
 }
