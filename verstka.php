@@ -30,7 +30,7 @@
 <?php if (!empty($messages)): ?>
     <?php foreach ($messages as $message): ?>
         <div class="message">
-            <a href="index.php?action=show&message_id"<?= $message['id'] ?>"><h2>Message № <?= $message['id'] ?></h2></a>
+            <a href="index.php?action=show&message_id=<?= $message['id'] ?>"><h2>Message № <?= $message['id'] ?></h2></a>
             <div><?= htmlspecialchars($message['message']); ?></div>
             <span class="right"><?= $message['date']; ?></span>
         </div>
