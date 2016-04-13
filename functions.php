@@ -59,5 +59,17 @@ function update_message(\PDO $connection, $message, $message_id)
     return $query->execute([
         'message' => $message,
         'message_id' => $message_id
-    ]);
+    ]);}
+function load_messages(\PDO $connection, $message_id = null)
+    {
+        $user = user();
+        if ($message_id !== null) {
+            $message_id = (int)$message_id;
+        }
+        return
+            $message_id === null
+                ? $connection->query("SELECT p.`date`,p.`message`, p.`id` FROM `posts`  p  WHERE p.`user_id` = {$user['id']} ORDER BY  p.`date` DESC")->fetchAll()
+                : $connection->query("SELECT p.`date`,p.`message`,p.`id` FROM `posts` p WHERE p.`id`={$message_id} ORDER BY p.`date` DESC")->fetchAll();
+
+
 }

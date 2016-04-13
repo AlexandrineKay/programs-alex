@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 $connection = connection(['host' => 'localhost', 'dbname' => 'epic', 'user' => 'root', 'password' => 'vagrant', 'encoding' => 'utf8']);
 $user = user();
-$action = empty($_GET['action']) ? 'default' : $_GET['action'];
+$action = empty($_GET['action']) ? 'home' : $_GET['action'];
 switch ($action) {
     case 'login':
         if (!empty($_POST['login']) && $_REQUEST['token'] == $_SESSION['token']) {
