@@ -69,13 +69,13 @@ function update_message(\PDO $connection, $message, $message_id)
 function insert_message(\PDO $connection, $message, $user)
 {
     if (!empty($message)) {
-        $a = $connection->prepare("INSERT INTO `posts` SET `message`=:message, `date`=NOW(), `user_id`={$user['id']}");
+        $a = $connection->prepare("INSERT INTO `posts` SET `message`=:message, `date`=NOW(), `user_id`= :user_id");
+        //`user_id`={$user['id']}");
         $a->execute([
             ':message' => $message,
-            //':user_id' => $user[`id`],
+            ':user_id' => $user['id'],
         ]);
     }
-    //var_dump("insert message");
 }
 
 function load_messages(\PDO $connection, $message_id = null)
