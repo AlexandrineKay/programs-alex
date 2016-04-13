@@ -26,33 +26,40 @@ switch ($action) {
         echo template("verstkalogin.php", [
             'token' => token(),]);
         break;
-    //case 'show':
-       // $messages = $connection->query("SELECT p.`date`,p.`message`, p.`id` FROM `posts`  p  WHERE p.`id` = {$message['id']}  ORDER BY  p.`date` DESC")->fetchAll();
+    case 'show':
+        if (empty($user)) {
+            header("Location:index.php?action=login");
+        }
+        $message_id = empty($_POST['message_id']) ? null : (int)$_POST['message_id'];
+        $message = empty($_POST['message']) ? null : $_POST['message'];
+        //$messages = $connection->query("SELECT p.`date`,p.`message`, p.`id` FROM `posts`  p  WHERE p.`id` = {$message_id}  ORDER BY  p.`date` DESC")->fetchAll();
+        $messages = $connection->query("SELECT p.`id`,p.`message`,p.`date` FROM `posts` p WHERE p.`id`={$message_id} ORDER BY p.`date` DESC")->fetchAll();
+        echo template("verstka.php", [
+            'messages' => $messages,
+            'message_id' => $message_id,
+            'token' => token(),]);
+        break;
     case 'post':
         if (empty($user)) {
             header("Location:index.php?action=login");
         }
         $message_id = empty($_POST['message_id']) ? null : (int)$_POST['message_id'];
         $message = empty($_POST['message']) ? null : $_POST['message'];
+        $messages = load_messages($connection, $message_id);
         echo template("verstka.php", [
-            'messages' => $messages,
+           'messages' => $messages,
             'message_id' => $message_id,
             'token' => token(),]);
         break;
     default:
-        if (!empty($_POST['message'])) {
-            $a = $connection->prepare("INSERT INTO `posts` SET `message`=:message, `date`=NOW(), `user_id`={$user['id']} ");
-            $a->execute([
-                ':message' => $_POST['message'],
-            ]);
-        }
         $message_id = empty($_GET['message_id']) ? null : (int)$_GET['message_id'];
+        $messages = load_messages($connection, $message_id);
         if (empty($user)) {
             header("Location:index.php?action=login");
         }
-        $messages = $connection->query("SELECT p.`date`,p.`message`, p.`id` FROM `posts`  p  WHERE p.`user_id` = {$user['id']} ORDER BY  p.`date` DESC")->fetchAll();
         echo template("verstka.php", [
-            'messages' => $messages,]);
+            'messages' => $messages,
+            'message_id' => $message_id,]);
         break;
 }
 
