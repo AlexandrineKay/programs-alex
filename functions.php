@@ -60,6 +60,14 @@ function update_message(\PDO $connection, $message, $message_id)
         'message' => $message,
         'message_id' => $message_id
     ]);}
+
+function insert_message(\PDO $connection)
+{if (!empty($_POST['message'])) {
+        $a = $connection->prepare("INSERT INTO `posts` SET `message`=:message, `title` = :title,`date`=NOW(), `user_id`='user_id' ");
+      $a->execute([
+        ':message' => $_POST['message'],
+           ]);
+}}
 function load_messages(\PDO $connection, $message_id = null)
     {
         $user = user();
