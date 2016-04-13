@@ -6,7 +6,6 @@ error_reporting(E_ALL);
 $connection = connection(['host' => 'localhost', 'dbname' => 'epic', 'user' => 'root', 'password' => 'vagrant', 'encoding' => 'utf8']);
 $user = user();
 $action = empty($_GET['action']) ? 'home' : $_GET['action'];
-//var_dump($action);
 switch ($action) {
     case 'login':
         if (!empty($_POST['login']) && $_REQUEST['token'] == $_SESSION['token']) {
@@ -40,7 +39,6 @@ switch ($action) {
                : insert_message($connection, $message, $user);
         }
         header("Location:index.php?action=home");
-        //var_dump($_POST);
        break;
     default:
         $message_id = empty($_GET['message_id']) ? null : (int)$_GET['message_id'];
