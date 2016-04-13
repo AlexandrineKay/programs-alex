@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 $connection = connection(['host' => 'localhost', 'dbname' => 'epic', 'user' => 'root', 'password' => 'vagrant', 'encoding' => 'utf8']);
 $user = user();
 $action = empty($_GET['action']) ? 'home' : $_GET['action'];
+//var_dump($action);
 switch ($action) {
     case 'login':
         if (!empty($_POST['login']) && $_REQUEST['token'] == $_SESSION['token']) {
@@ -36,14 +37,10 @@ switch ($action) {
         if (!empty($message) && valid_token($_POST['token'])) {
            isset($message_id)
                ? update_message($connection, $message, $message_id)
-               : insert_message($connection);
+               : insert_message($connection, $message, $user);
         }
         header("Location:index.php?action=home");
-
-        //echo template("verstka.php", [
-           //'messages' => $messages,
-           // 'message_id' => $message_id,
-           // 'token' => token(),]);
+        //var_dump($_POST);
        break;
     default:
         $message_id = empty($_GET['message_id']) ? null : (int)$_GET['message_id'];
@@ -53,7 +50,8 @@ switch ($action) {
         }
         echo template("verstka.php", [
             'messages' => $messages,
-            'message_id' => $message_id,]);
+            'message_id' => $message_id,
+            'token' => token(),]);
         break;
 }
 
