@@ -5,11 +5,13 @@
 <title>Login</title>
 <style type="text/css">
     body {
-        width: 50%;
+        width: 40%;
         margin-left: auto;
         margin-right: auto;
-        background: url(http://2.bp.blogspot.com/-9Bvkqke3-4I/TZrVwdS3FvI/AAAAAAAABYo/uSWDuNAJe-g/s1600/%2525D0%252592%2525D0%2525B8%2525D0%2525BD%2525D1%252582%2525D0%2525B0%2525D0%2525B6+%2525D1%252581+%2525D0%2525B3%2525D0%2525BE%2525D0%2525BB%2525D1%252583%2525D0%2525B1%2525D1%25258B%2525D0%2525BC+%2525D0%2525BA%2525D0%2525BE%2525D0%2525BF%2525D0%2525B8%2525D1%25258F.jpg);
+        background: url(http://www.shabbyblogs.com/storage/new/ShabbyBlogsNatalie.jpg) repeat-y;
+        background-size: 100%;
     }
+    h3{color: #E59866;}
 </style>
 </head>
 <body>
