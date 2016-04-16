@@ -20,7 +20,7 @@ switch ($action) {
         break;
     default:
         $home = new Home($connection);
-        echo $home -> getHome($connection);
+        echo $home -> getHome();
         break;
 }
 

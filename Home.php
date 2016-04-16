@@ -11,12 +11,14 @@ class Home
     {
         return $this->connection;
     }
-    public function getHome($connection){
-        $message_id = empty($_GET['message_id']) ? null : (int)$_GET['message_id'];
-        $messages = load_messages($connection, $message_id);
-        if (empty($_SESSION['user'])) {
+    public function getHome(){
+        $user = user();
+        if (empty($user)){
             header("Location:index.php?action=login");
         }
+
+        $message_id = empty($_GET['message_id']) ? null : (int)$_GET['message_id'];
+        $messages = load_messages($this->connection, $message_id, $user);
         echo template("verstka.php", [
             'messages' => $messages,
             'message_id' => $message_id,
