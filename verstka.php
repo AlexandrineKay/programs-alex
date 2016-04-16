@@ -50,11 +50,9 @@
 <form action ='index.php?action=login' method="post">
     <button>Выйти</button>
 </form>
-<?
-for ($page =1; $page<= $num_pages; $page++): ?>
-        <b><?=$page?></b>
-        <a href="?page=<?=$page?>"><?=$page?></a>
-<? endfor ?>
+<?php for ($page =0; $page< $num_pages; $page++): ?>
+        <a href="?page=<?=$page?>"><?=$page+1?></a>
+<?php endfor ?>
 
 </body>
 </html>

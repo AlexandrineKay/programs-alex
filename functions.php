@@ -70,17 +70,15 @@ function insert_message(\PDO $connection, $message, $user)
         ]);
     }
 }
-function count_messages(\PDO $connection)
+function count_messages(\PDO $connection, $user)
 {
-    $connection->query('SELECT  count(*) FROM `posts`');
+    $a = $connection->query("SELECT  count(*) FROM `posts` p WHERE p.`user_id` = {$user['id']}")->fetch();
+    return $a["count(*)"];
 }
-function load_messages(\PDO $connection, $message_id = null, $user)
+function load_messages(\PDO $connection, $message_id = null, $user, $per_page, $page)
 {
     //$user = user();
-    $per_page=10;
-    $start = 0;
-    if (isset($_GET['page'])) $page=($_GET['page']+1); else $page=0;
-    $start=abs($page*$per_page);
+    $start = $page * $per_page;
     if ($message_id !== null) {
         $message_id = (int)$message_id;
     }
