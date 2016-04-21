@@ -1,6 +1,6 @@
 <?php
 class Post extends Controller
-{ public $connection;
+{
     public function postPost(){
         $user = user();
         if (empty($user)) {
