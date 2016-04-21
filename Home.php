@@ -6,7 +6,7 @@ class Home extends Controller
     public $cur_page;
     public function getHome($params = []){
         $user = user();
-        $per_page = 4;
+        $per_page = 5;
         $page = isset($_GET['page']) ? $_GET['page']: 0;
         if (empty($user)){
             header("Location:index.php?action=login");
