@@ -19,7 +19,7 @@ class Login extends Controller
                 header("Location: index.php");
             }
         }
-        echo template("verstkalogin.php", [
+        echo template("Verstka/verstkalogin.php", [
             'token' => token(),]);
     }
     public function getLogin(){
@@ -29,7 +29,7 @@ class Login extends Controller
             header("Location: index.php");
         }
 
-        echo template("verstkalogin.php", [
+        echo template("Verstka/verstkalogin.php", [
         'token' => token(),]);
 }
 }

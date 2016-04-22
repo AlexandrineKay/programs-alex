@@ -34,20 +34,20 @@
 <?php if (!empty($messages)): ?>
     <?php foreach ($messages as $message): ?>
         <div class="message">
-            <a href="index.php?action=home&message_id=<?= $message['id'];?>"><h2>Запись № <?= $message['id'] ?></h2></a>
+            <a href="../index.php?action=home&message_id=<?= $message['id'];?>"><h2>Запись № <?= $message['id'] ?></h2></a>
             <div><?= htmlspecialchars($message['message']); ?></div>
             <span class="right"><?= $message['date']; ?></span>
         </div>
     <?php endforeach ?>
 <?php endif ?>
 
-<form action ='index.php?action=post' method="POST">
+<form action ='../index.php?action=post' method="POST">
     <textarea name="message" id="message" cols = "50" rows="10"><?= empty($message_id) ? '' : $messages[0]['message'] ?></textarea>
     <input type="hidden" name="message_id" value="<?= $message_id ?>">
     <input type="submit" name="action" value="Сохранить">
     <input type="hidden" name="token" value="<?= $token ?>">
 </form>
-<form action ='index.php?action=login' method="post">
+<form action ='../index.php?action=login' method="post">
     <button>Выйти</button>
 </form>
 <?php for ($page =0; $page< $num_pages; $page++): ?>
