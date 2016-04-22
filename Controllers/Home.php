@@ -1,9 +1,6 @@
 <?php
 class Home extends Controller
 {
-    public $num_pages;
-    public $page;
-    public $cur_page;
     public function getHome($params = []){
         $user = user();
         $per_page = 5;
@@ -14,7 +11,7 @@ class Home extends Controller
         $message_id = empty($params['message_id']) ? null : (int)$params['message_id'];
         $messages = load_messages(connection(), $message_id, $user, $per_page, $page);
         $num_pages= ceil(count_messages(connection(), $user)/$per_page);
-        echo template("Verstka/verstka.php", [
+        echo template("Templates/template.php", [
             'messages' => $messages,
             'message_id' => $message_id,
             'token' => token(),

@@ -3,7 +3,6 @@ class Login extends Controller
 {
     public function postLogin()
     {
-        $user = user();
         if (!empty($_POST['login']) && $_REQUEST['token'] == $_SESSION['token']) {
             $a = connection()->prepare('SELECT * FROM `users` WHERE `login` = :login AND `password`=:password');
             $a->execute([
@@ -19,7 +18,7 @@ class Login extends Controller
                 header("Location: index.php");
             }
         }
-        echo template("Verstka/verstkalogin.php", [
+        echo template("Templates/templatelogin.php", [
             'token' => token(),]);
     }
     public function getLogin(){
@@ -29,7 +28,7 @@ class Login extends Controller
             header("Location: index.php");
         }
 
-        echo template("Verstka/verstkalogin.php", [
+        echo template("Templates/templatelogin.php", [
         'token' => token(),]);
 }
 }
