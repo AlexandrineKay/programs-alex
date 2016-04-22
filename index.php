@@ -3,7 +3,7 @@ session_start();
 require "functions.php";
 spl_autoload_register(function ($class)
 {
-    include "{$class}.php";
+    include "Controllers/{$class}.php";
 });
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
