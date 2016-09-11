@@ -94,7 +94,7 @@ function load_goods(\PDO $connection, $good_id = null, $per_page, $page)
     }
     return
         $good_id === null
-            ? $connection->query("SELECT g.`categ`,g.`title`,g.`price`,g.`description`, g.`id` FROM `goods`  g  ORDER BY  g.`price` DESC LIMIT {$start},{$per_page}")->fetchAll()
+            ? $connection->query("SELECT g.`categ`,g.`title`,g.`price`,g.`description`, g.`picture`, g.`id` FROM `goods`  g  ORDER BY  g.`price` DESC LIMIT {$start},{$per_page}")->fetchAll()
             : $connection->query("SELECT g.`categ`,g.`title`,g.`id` FROM `goods` g WHERE g.`id`={$good_id} ORDER BY g.`price` DESC")->fetchAll();
 }
 function load_messages(\PDO $connection, $message_id = null, $user, $per_page, $page)

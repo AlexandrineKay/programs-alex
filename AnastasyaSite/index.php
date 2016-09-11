@@ -12,4 +12,5 @@ routes($_SERVER['REQUEST_URI'],[
     'home' => 'Home',
     'post' => 'Post',
     'login' => 'Login',
+    'category'=>'Category',
 ]);
