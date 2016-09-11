@@ -23,6 +23,18 @@
         H4{color:#8A0808;}
         p {text-indent: 20px;
             padding: 10px;}
+        a{
+            text-decoration: none;
+            transition: 1s linear;
+        }
+        a:hover {
+            color: #fff; /* Цвет текста */
+        }
+        .message {
+            margin-bottom: 50px;
+            padding: 50px;
+            border: 2px;
+        }
     </style>
 </head>
 <body>
@@ -34,13 +46,21 @@
     <tr style = "background-image:url(http://365psd.ru/images/backgrounds/paper-1.jpg);">
         <td style = "width:20%;height:250px; vertical-align: top;">
             <table width = "100%" height = "200px" cellpadding="10">
-                <tr><td><H3> Категории </H3> <hr/> </td></tr>
+                <tr><td><a href="../index.php?action=category"><H3>Категории</H3></a> <hr/> </td></tr>
                 <tr><td><H3> На заказ </H3> <hr/> </td></tr>
                 <tr><td><H3> Отзывы </H3> <hr/> </td></tr>
                 <tr><td><H3> "Зал славы" </H3> <hr/> </td></tr>
                 <tr><td><H3> Контакты </H3> <hr/> </td></tr>
             </table> </td>
-        <td style = "height:525px;"><H2 align = "center">  Новости </H2>
+        <td style = "height:525px;"><H2 align = "center">  Акции </H2>
+            <?php if (!empty($messages)): ?>
+                <?php foreach ($messages as $message): ?>
+                    <div class="message">
+                        <h2>Акция от <?= $message['date'] ?></h2>
+                        <div><?= htmlspecialchars($message['message']); ?></div>
+                    </div>
+                <?php endforeach ?>
+            <?php endif ?>
     <tr>
         <td colspan = "2" align = "center"> <H4> <b> (c) Коновалова Александра 2016 </b> </H4> </td>
     </tr>
