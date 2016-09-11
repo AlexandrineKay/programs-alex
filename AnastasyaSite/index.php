@@ -11,6 +11,6 @@ $connection = connection(['host' => 'localhost', 'dbname' => 'nastyashe', 'user'
 routes($_SERVER['REQUEST_URI'],[
     'home' => 'Home',
     'post' => 'Post',
-    'login' => 'Login',
+    'order' => 'Order',
     'category'=>'Category',
 ]);
