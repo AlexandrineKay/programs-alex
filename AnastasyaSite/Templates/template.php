@@ -28,7 +28,7 @@
             transition: 1s linear;
         }
         a:hover {
-            color: #fff; /* Цвет текста */
+            color: #fff;
         }
         .message {
             margin-bottom: 50px;
@@ -46,7 +46,7 @@
     <tr style = "background-image:url(http://365psd.ru/images/backgrounds/paper-1.jpg);">
         <td style = "width:20%;height:250px; vertical-align: top;">
             <table width = "100%" height = "200px" cellpadding="10">
-                <tr><td><a href="index.php?action=category"><H3>Категории</H3></a> <hr/> </td></tr>
+                <tr><td><a href="index.php?action=category"><H3>Товары</H3></a> <hr/> </td></tr>
                 <tr><td><H3> На заказ </H3> <hr/> </td></tr>
                 <tr><td><H3> Отзывы </H3> <hr/> </td></tr>
                 <tr><td><H3> "Зал славы" </H3> <hr/> </td></tr>
