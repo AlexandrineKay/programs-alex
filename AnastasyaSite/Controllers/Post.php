@@ -13,6 +13,15 @@ class Post extends Controller
         if (IsChecked('formDoor', '2')) {
             $goods = load_kl(connection(), $good_id, $per_page, $page);
         }
+        if (IsChecked('formDoor', '3')) {
+            $goods = load_kch(connection(), $good_id, $per_page, $page);
+        }
+        if (IsChecked('formDoor', '4')) {
+            $goods = load_brosh(connection(), $good_id, $per_page, $page);
+        }
+        if (IsChecked('formDoor', '5')) {
+            $goods = load_dr(connection(), $good_id, $per_page, $page);
+        }
         echo template("Templates/templatecateg.php", [
             'goods'=>$goods,
             'good_id' => $good_id,

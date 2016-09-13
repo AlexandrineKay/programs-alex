@@ -94,6 +94,11 @@ function count_messages(\PDO $connection)
     $a = $connection->query("SELECT  count(*) FROM `news`")->fetch();
     return $a["count(*)"];
 }
+function count_goods(\PDO $connection)
+{
+    $a = $connection->query("SELECT  count(*) FROM `goods`")->fetch();
+    return $a["count(*)"];
+}
 function load_br(\PDO $connection, $good_id = null, $per_page, $page)
 {
     //$user = user();
@@ -103,7 +108,7 @@ function load_br(\PDO $connection, $good_id = null, $per_page, $page)
     }
     return
         $good_id === null
-            ? $connection->query("SELECT g.`id`,g.`title`, g. `price`, g.`description`, g.`picture`, g.`categ_id` FROM `goods`  g WHERE g.`categ_id`= 1 ORDER BY  g.`price` DESC LIMIT {$start},{$per_page}")->fetchAll()
+            ? $connection->query("SELECT g.`id`,g.`title`, g. `price`, g.`description`, g.`picture`, g.`categ_id` FROM `goods`  g WHERE g.`categ_id`= 1 ORDER BY  g.`price` ASC LIMIT {$start},{$per_page}")->fetchAll()
             : $connection->query("SELECT g.`categ`,g.`title`,g.`id` FROM `goods` g WHERE g.`id`={$good_id} ORDER BY g.`price` DESC")->fetchAll();
 }
 function load_kl(\PDO $connection, $good_id = null, $per_page, $page)
@@ -115,7 +120,43 @@ function load_kl(\PDO $connection, $good_id = null, $per_page, $page)
     }
     return
         $good_id === null
-            ? $connection->query("SELECT g.`id`,g.`title`, g. `price`, g.`description`, g.`picture`, g.`categ_id` FROM `goods`  g WHERE g.`categ_id`= 2 ORDER BY  g.`price` DESC LIMIT {$start},{$per_page}")->fetchAll()
+            ? $connection->query("SELECT g.`id`,g.`title`, g. `price`, g.`description`, g.`picture`, g.`categ_id` FROM `goods`  g WHERE g.`categ_id`= 2 ORDER BY  g.`price` ASC LIMIT {$start},{$per_page}")->fetchAll()
+            : $connection->query("SELECT g.`categ`,g.`title`,g.`id` FROM `goods` g WHERE g.`id`={$good_id} ORDER BY g.`price` DESC")->fetchAll();
+}
+function load_kch(\PDO $connection, $good_id = null, $per_page, $page)
+{
+    //$user = user();
+    $start = $page * $per_page;
+    if ($good_id !== null) {
+        $good_id = (int)$good_id;
+    }
+    return
+        $good_id === null
+            ? $connection->query("SELECT g.`id`,g.`title`, g. `price`, g.`description`, g.`picture`, g.`categ_id` FROM `goods`  g WHERE g.`categ_id`= 3 ORDER BY  g.`price` ASC LIMIT {$start},{$per_page}")->fetchAll()
+            : $connection->query("SELECT g.`categ`,g.`title`,g.`id` FROM `goods` g WHERE g.`id`={$good_id} ORDER BY g.`price` DESC")->fetchAll();
+}
+function load_brosh(\PDO $connection, $good_id = null, $per_page, $page)
+{
+    //$user = user();
+    $start = $page * $per_page;
+    if ($good_id !== null) {
+        $good_id = (int)$good_id;
+    }
+    return
+        $good_id === null
+            ? $connection->query("SELECT g.`id`,g.`title`, g. `price`, g.`description`, g.`picture`, g.`categ_id` FROM `goods`  g WHERE g.`categ_id`= 4 ORDER BY  g.`price` ASC LIMIT {$start},{$per_page}")->fetchAll()
+            : $connection->query("SELECT g.`categ`,g.`title`,g.`id` FROM `goods` g WHERE g.`id`={$good_id} ORDER BY g.`price` DESC")->fetchAll();
+}
+function load_dr(\PDO $connection, $good_id = null, $per_page, $page)
+{
+    //$user = user();
+    $start = $page * $per_page;
+    if ($good_id !== null) {
+        $good_id = (int)$good_id;
+    }
+    return
+        $good_id === null
+            ? $connection->query("SELECT g.`id`,g.`title`, g. `price`, g.`description`, g.`picture`, g.`categ_id` FROM `goods`  g WHERE g.`categ_id`= 5 ORDER BY  g.`price` ASC LIMIT {$start},{$per_page}")->fetchAll()
             : $connection->query("SELECT g.`categ`,g.`title`,g.`id` FROM `goods` g WHERE g.`id`={$good_id} ORDER BY g.`price` DESC")->fetchAll();
 }
 function load_goods(\PDO $connection, $good_id = null, $per_page, $page)
@@ -127,7 +168,7 @@ function load_goods(\PDO $connection, $good_id = null, $per_page, $page)
     }
     return
         $good_id === null
-            ? $connection->query("SELECT g.`id`,g.`title`, g. `price`, g.`description`, g.`picture`, g.`categ_id` FROM `goods`  g  ORDER BY  g.`price` DESC LIMIT {$start},{$per_page}")->fetchAll()
+            ? $connection->query("SELECT g.`id`,g.`title`, g. `price`, g.`description`, g.`picture`, g.`categ_id` FROM `goods`  g  ORDER BY  g.`price` ASC LIMIT {$start},{$per_page}")->fetchAll()
             : $connection->query("SELECT g.`categ`,g.`title`,g.`id` FROM `goods` g WHERE g.`id`={$good_id} ORDER BY g.`price` DESC")->fetchAll();
 }
 
