@@ -45,12 +45,13 @@
         <td style = "width:20%;height:250px; vertical-align: top;">
             <table width = "100%" height = "200px" cellpadding="10">
                 <tr><td><H3 align="center"> Фильтр </H3>
-                        <p><input type="checkbox" name="br" value="1"> Браслеты </p>
-                        <p><input type="checkbox" name="col" value="2"> Колье </p>
-                        <p><input type="checkbox" name="coc" value="3"> Кольца </p>
-                        <p><input type="checkbox" name="brosh" value="4"> Броши </p>
-                        <p><input type="checkbox" name="oth" value="5"> Другое </p>
-                        <p><input type="submit" value="Применить"></p> <hr/> </td></tr>
+                        <form action ='index.php?action=post' method="POST">
+                        <p><input type="checkbox" name="formDoor[]" value="1"> Браслеты </p>
+                        <p><input type="checkbox" name="formDoor[]" value="2"> Колье </p>
+                        <p><input type="checkbox" name="formDoor[]" value="3"> Кольца </p>
+                        <p><input type="checkbox" name="formDoor[]" value="4"> Броши </p>
+                        <p><input type="checkbox" name="formDoor[]" value="5"> Другое </p>
+                        <p><input type="submit" name="formSubmit" value="Применить"></p> <hr/> </td></tr>
             </table> </td>
         <td style = "height:525px;"><H2 align = "center"> Товары </H2>
             <?php if (!empty($goods)): ?>
