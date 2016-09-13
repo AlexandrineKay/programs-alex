@@ -3,39 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Ласточка</title>
+    <link rel ="stylesheet"  type = "text/css" href="style.css">
     <link rel="shortcut icon" href="https://66.media.tumblr.com/2e5926fbce178b89b5448e2dc2a2d144/tumblr_oczwn2yvmU1szmf1so1_75sq.png" type="image/png">
-    <style type="text/css">
-        body {background-image: url(http://365psd.ru/images/backgrounds/old-paper-text.jpg);
-            background-color: #c7b39b;
-            font-family:arial, verdana, sans-serif;
-            font-size: 16px;}
-        table{width: 94%; height: 100%; border-collapse: collapse; margin: auto;}
-        table td{height: 50px; border: 0px solid #000;}
-        H1{color: #8A0808;
-            font-style: italic;
-            font-size: 36px;
-            letter-spacing: 10px;}
-        H2{padding: 10px;
-            color: #8A2908;
-            font-size: 24px;}
-        H3{color:#61380B;
-            font-size: 22px;}
-        H4{color:#8A0808;}
-        p {text-indent: 20px;
-            padding: 10px;}
-        a{
-            text-decoration: none;
-            transition: 1s linear;
-        }
-        a:hover {
-            color: #fff;
-        }
-        .message {
-            margin-bottom: 50px;
-            padding: 50px;
-            border: 2px;
-        }
-    </style>
 </head>
 <body>
 <table style = "background-image:url(http://365psd.ru/images/backgrounds/paper-1.jpg);">>
