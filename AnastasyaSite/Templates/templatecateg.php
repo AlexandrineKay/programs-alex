@@ -38,7 +38,7 @@
 <body>
 <table style = "background-image:url(http://365psd.ru/images/backgrounds/paper-1.jpg);" width=94% align="center" >
     <tr>
-       <td><img src="https://67.media.tumblr.com/41bc2deea7a3611f5206de875725737e/tumblr_oczvy4Sgs81szmf1so1_250.png"></td>
+       <td><a href="index.php?action=home"><img src="https://67.media.tumblr.com/41bc2deea7a3611f5206de875725737e/tumblr_oczvy4Sgs81szmf1so1_250.png"></a></td>
         <td colspan = "2" align = "center">  <H1>  <a name ="nw"></a> Мастерская "Ласточка" </H1> </td>
     </tr>
     <tr style = "background-image:url(http://365psd.ru/images/backgrounds/paper-1.jpg);">
@@ -47,7 +47,7 @@
                 <tr><td><H3 align="center"> Фильтр </H3>
                         <form action ='index.php?action=post' method="POST">
                         <p><input type="checkbox" name="formDoor[]" value="1"> Браслеты </p>
-                        <p><input type="checkbox" name="formDoor[]" value="2"> Колье </p>
+                        <p><input type="checkbox" name="formDoor[]" value="2"> Колье и кулоны </p>
                         <p><input type="checkbox" name="formDoor[]" value="3"> Кольца </p>
                         <p><input type="checkbox" name="formDoor[]" value="4"> Броши </p>
                         <p><input type="checkbox" name="formDoor[]" value="5"> Другое </p>
@@ -60,7 +60,7 @@
                        <td> <div class="good"><div> <b><?= htmlspecialchars($good['title']); ?></b> </div>
                         <div><?= htmlspecialchars($good['description']); ?></div>
                         <div><em><?= htmlspecialchars($good['price']); ?> рублей </em> </div></div></td>
-               <td> <p><input type="submit" value="Добавить в корзину"></p> </td></tr></table>
+               <td> <form><p><input type="image" src="https://eda.citysakh.ru/img/eda/cart.png" height="50px"width="50px" alt="В корзину"></p></form> </td></tr></table>
     <?php endforeach ?>
 <?php endif ?>
     <a href="index.php?action=home"><p align="right">На главную </p></a>
