@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="https://66.media.tumblr.com/2e5926fbce178b89b5448e2dc2a2d144/tumblr_oczwn2yvmU1szmf1so1_75sq.png" type="image/png">
 </head>
 <body>
-<table style = "background-image:url(http://365psd.ru/images/backgrounds/paper-1.jpg);">
+<table style = "background-image:url(http://365psd.ru/images/backgrounds/paper-1.jpg);" width=94% align="center" >
     <tr>
        <td><img src="https://67.media.tumblr.com/41bc2deea7a3611f5206de875725737e/tumblr_oczvy4Sgs81szmf1so1_250.png"></td>
         <td colspan = "2" align = "center">  <H1>  Мастерская "Ласточка" </H1> </td>
