@@ -14,4 +14,5 @@ routes($_SERVER['REQUEST_URI'],[
     'order' => 'Order',
     'category'=>'Category',
     'hall'=>'Hall',
+    'review'=>'Review',
 ]);

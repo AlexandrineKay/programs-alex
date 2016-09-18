@@ -104,6 +104,22 @@ function count_halls(\PDO $connection)
     $a = $connection->query("SELECT  count(*) FROM `hall`")->fetch();
     return $a["count(*)"];
 }
+function count_reviews(\PDO $connection)
+{
+    $a = $connection->query("SELECT  count(*) FROM `reviews`")->fetch();
+    return $a["count(*)"];
+}
+function load_reviews(\PDO $connection, $review_id = null, $per_page, $page)
+{
+    $start = $page * $per_page;
+    if ($review_id !== null) {
+        $review_id = (int)$review_id;
+    }
+    return
+        $review_id === null
+            ? $connection->query("SELECT r.`id`,r.`date`, r. `user_name`, r.`title`, r.`message` FROM `reviews`  r ORDER BY r.`date` DESC LIMIT {$start},{$per_page}")->fetchAll()
+            : $connection->query("SELECT r.`id`,r.`date`, r. `user_name`, r.`title`, r.`message` FROM `reviews`  r  WHERE r.`id`={$review_id}")->fetchAll();
+}
 function load_halls(\PDO $connection, $hall_id = null, $per_page, $page)
 {
     $start = $page * $per_page;

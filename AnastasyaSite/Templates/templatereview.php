@@ -10,7 +10,7 @@
 <table style = "background-image:url(http://365psd.ru/images/backgrounds/paper-1.jpg);" width=94% align="center" >
     <tr>
         <td><a href="index.php?action=home"><img src="https://67.media.tumblr.com/41bc2deea7a3611f5206de875725737e/tumblr_oczvy4Sgs81szmf1so1_250.png"></a></td>
-        <td colspan = "2" align = "center"> <H1> Мастерская "Ласточка" </H1> </td>
+        <td colspan = "2" align = "center">  <H1>  Мастерская "Ласточка" </H1> </td>
     </tr>
     <tr style = "background-image:url(http://365psd.ru/images/backgrounds/paper-1.jpg);">
         <td style = "width:20%;height:250px; vertical-align: top;">
@@ -21,11 +21,18 @@
                 <tr><td><a href="index.php?action=hall"><H3> "Зал славы" </H3></a> <hr/> </td></tr>
                 <tr><td><H3> Контакты </H3> <hr/> </td></tr>
             </table> </td>
-        <td style = "height:525px;"><H2 align = "center"> Ваш Заказ </H2>
-            <p>Ваше ФИО: </p>
-            <p>Описание Вашего заказа: </p>
-            <p>Адрес Вашей страницы в Vk: </p>
-            <a href="index.php?action=home"><p align="right">На главную </p></a>
+        <td style = "height:525px;"><H2 align = "center"> Отзывы </H2>
+            <?php if (!empty($reviews)): ?>
+                <?php foreach ($reviews as $review): ?>
+                    <div class="message">
+                        <h2>Отзыв № <?= $review['id'] ?> от <?= htmlspecialchars($review['date']); ?></h2>
+                        <table><tr><td><p><b><?= $review['title'];?></b></p></td></tr>
+                               <tr><td><div><p><?= htmlspecialchars($review['message']); ?></p></div></td></tr>
+                            <tr><td><div> <p align="right"> <?= htmlspecialchars($review['user_name']); ?></p></div></td></tr></table>
+                    </div>
+                <?php endforeach ?>
+            <?php endif ?>
+            <a href="index.php?action=home"><p align="right">На главную </p></a></td>
     <tr>
         <td colspan = "2" align = "center"> <H4> <b> (c) Коновалова Александра 2016 </b> </H4> </td>
     </tr>

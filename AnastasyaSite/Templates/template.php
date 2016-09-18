@@ -17,7 +17,7 @@
             <table width = "100%" height = "200px" cellpadding="10">
                 <tr><td><a href="index.php?action=category"><H3>Товары</H3></a> <hr/> </td></tr>
                 <tr><td><a href="index.php?action=order"><H3> На заказ </H3> </a><hr/> </td></tr>
-                <tr><td><H3> Отзывы </H3> <hr/> </td></tr>
+                <tr><td><a href="index.php?action=review"><H3> Отзывы </H3></a> <hr/> </td></tr>
                 <tr><td><a href="index.php?action=hall"><H3> "Зал славы" </H3></a> <hr/> </td></tr>
                 <tr><td><H3> Контакты </H3> <hr/> </td></tr>
             </table> </td>
