@@ -10,7 +10,7 @@
 <table style = "background-image:url(http://365psd.ru/images/backgrounds/paper-1.jpg);">
     <tr>
        <td><img src="https://67.media.tumblr.com/41bc2deea7a3611f5206de875725737e/tumblr_oczvy4Sgs81szmf1so1_250.png"></td>
-        <td colspan = "2" align = "center">  <H1>  <a name ="nw"></a> Мастерская "Ласточка" </H1> </td>
+        <td colspan = "2" align = "center">  <H1>  Мастерская "Ласточка" </H1> </td>
     </tr>
     <tr style = "background-image:url(http://365psd.ru/images/backgrounds/paper-1.jpg);">
         <td style = "width:20%;height:250px; vertical-align: top;">
@@ -18,7 +18,7 @@
                 <tr><td><a href="index.php?action=category"><H3>Товары</H3></a> <hr/> </td></tr>
                 <tr><td><a href="index.php?action=order"><H3> На заказ </H3> </a><hr/> </td></tr>
                 <tr><td><H3> Отзывы </H3> <hr/> </td></tr>
-                <tr><td><H3> "Зал славы" </H3> <hr/> </td></tr>
+                <tr><td><a href="index.php?action=hall"><H3> "Зал славы" </H3></a> <hr/> </td></tr>
                 <tr><td><H3> Контакты </H3> <hr/> </td></tr>
             </table> </td>
         <td style = "height:525px;"><H2 align = "center">  Акции </H2>

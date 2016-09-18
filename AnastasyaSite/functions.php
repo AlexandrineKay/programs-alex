@@ -99,6 +99,22 @@ function count_goods(\PDO $connection)
     $a = $connection->query("SELECT  count(*) FROM `goods`")->fetch();
     return $a["count(*)"];
 }
+function count_halls(\PDO $connection)
+{
+    $a = $connection->query("SELECT  count(*) FROM `hall`")->fetch();
+    return $a["count(*)"];
+}
+function load_halls(\PDO $connection, $hall_id = null, $per_page, $page)
+{
+    $start = $page * $per_page;
+    if ($hall_id !== null) {
+        $hall_id = (int)$hall_id;
+    }
+    return
+        $hall_id === null
+            ? $connection->query("SELECT h.`id`,h.`hall_name`, h. `hall_picture`, h.`hall_description` FROM `hall`  h  LIMIT {$start},{$per_page}")->fetchAll()
+            : $connection->query("SELECT h.`id`,h.`hall_name`, h. `hall_picture`, h.`hall_description` FROM `hall`  h WHERE h.`id`={$hall_id}")->fetchAll();
+}
 function load_br(\PDO $connection, $good_id = null, $per_page, $page)
 {
     //$user = user();
