@@ -22,6 +22,14 @@
                 <tr><td><a href="index.php?action=contacts"><H3> Контакты </H3></a>  <hr/> </td></tr>
             </table> </td>
         <td style = "height:525px;"><H2 align = "center"> Отзывы </H2>
+            <b> Чтобы оставить отзыв, заполните форму ниже:</b>
+            <form action ='index.php?action=newreview' method="POST">
+                <table><tr> <td>Отзыв:</td> <td> <textarea name="review" id="review" cols = "70" rows="2"><?= empty($review_id) ? '' : $review['message'] ?></textarea> </td></tr>
+                    <tr><td> Ваше имя:</td><td><textarea name="user_name" id="user_name" cols = "70" rows="1"><?= empty($review_id) ? '' : $review['user_name'] ?></textarea></td></tr></table>
+                <input type="hidden" name="review_id" value="<?= $review_id ?>">
+                <input type="submit" name="action" value="Сохранить">
+                <input type="hidden" name="token" value="<?= $token ?>">
+            </form>
             <?php if (!empty($reviews)): ?>
                 <?php foreach ($reviews as $review): ?>
                     <div class="message">

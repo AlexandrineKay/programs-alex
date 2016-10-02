@@ -120,15 +120,14 @@ function load_reviews(\PDO $connection, $review_id = null, $per_page, $page)
             ? $connection->query("SELECT r.`id`,r.`date`, r. `user_name`,  r.`message` FROM `reviews`  r ORDER BY r.`date` DESC")->fetchAll()
             : $connection->query("SELECT r.`id`,r.`date`, r. `user_name`, r.`message` FROM `reviews`  r  WHERE r.`id`={$review_id}")->fetchAll();
 }
-function insert_review(\PDO $connection, $review, $user)
+function insert_review(\PDO $connection, $review, $nameus)
 {
     if (!empty($review)) {
-        $a = $connection->prepare("INSERT INTO `reviews` SET `message`=:message, `date`=NOW(), `user_name`= :name, ");
+        $a = $connection->prepare("INSERT INTO `reviews` SET `message`=:review, `date`=NOW(), `user_name`= :nameus");
         //`user_id`={$user['id']}");
         $a->execute([
-            ':message' => $review,
-            ':name'=> $name,
-            ':user_id' => $user['id'],
+            ':review' => $review,
+            ':nameus'=> $nameus,
         ]);
     }
 }
@@ -225,7 +224,7 @@ function load_messages(\PDO $connection, $message_id = null, $user, $per_page, $
     }
     return
         $message_id === null
-            ? $connection->query("SELECT n.`date`,n.`message`, n.`id` FROM `news`  n  ORDER BY  n.`date` DESC}")->fetchAll()
+            ? $connection->query("SELECT n.`date`,n.`message`, n.`id` FROM `news`  n  ORDER BY  n.`date` DESC")->fetchAll()
             : $connection->query("SELECT n.`date`,n.`message`,n.`id` FROM `news` n WHERE n.`id`={$message_id} ORDER BY n.`date` DESC")->fetchAll();
 }
 function routes($uri, $routes)

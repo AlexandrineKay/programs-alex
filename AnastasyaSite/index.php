@@ -16,4 +16,5 @@ routes($_SERVER['REQUEST_URI'],[
     'hall'=>'Hall',
     'review'=>'Review',
     'contacts'=>'Contacts',
+    'newreview'=>'NewReview',
 ]);
