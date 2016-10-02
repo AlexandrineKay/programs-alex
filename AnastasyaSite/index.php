@@ -15,4 +15,5 @@ routes($_SERVER['REQUEST_URI'],[
     'category'=>'Category',
     'hall'=>'Hall',
     'review'=>'Review',
+    'contacts'=>'Contacts',
 ]);

@@ -120,6 +120,18 @@ function load_reviews(\PDO $connection, $review_id = null, $per_page, $page)
             ? $connection->query("SELECT r.`id`,r.`date`, r. `user_name`, r.`title`, r.`message` FROM `reviews`  r ORDER BY r.`date` DESC LIMIT {$start},{$per_page}")->fetchAll()
             : $connection->query("SELECT r.`id`,r.`date`, r. `user_name`, r.`title`, r.`message` FROM `reviews`  r  WHERE r.`id`={$review_id}")->fetchAll();
 }
+function insert_review(\PDO $connection, $review, $user)
+{
+    if (!empty($review)) {
+        $a = $connection->prepare("INSERT INTO `reviews` SET `message`=:message, `date`=NOW(), `user_name`= :name, ");
+        //`user_id`={$user['id']}");
+        $a->execute([
+            ':message' => $review,
+            ':name'=> $name,
+            ':user_id' => $user['id'],
+        ]);
+    }
+}
 function load_halls(\PDO $connection, $hall_id = null, $per_page, $page)
 {
     $start = $page * $per_page;

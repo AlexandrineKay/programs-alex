@@ -9,8 +9,8 @@
 <body>
 <table style = "background-image:url(http://365psd.ru/images/backgrounds/paper-1.jpg);" width=94% align="center" >
     <tr>
-       <td><img src="https://67.media.tumblr.com/41bc2deea7a3611f5206de875725737e/tumblr_oczvy4Sgs81szmf1so1_250.png"></td>
-        <td colspan = "2" align = "center">  <H1>  Мастерская "Ласточка" </H1> </td>
+        <td><a href="index.php?action=home"><img src="https://67.media.tumblr.com/41bc2deea7a3611f5206de875725737e/tumblr_oczvy4Sgs81szmf1so1_250.png"></a></td>
+        <td colspan = "2" align = "center"> <H1> Мастерская "Ласточка" </H1> </td>
     </tr>
     <tr style = "background-image:url(http://365psd.ru/images/backgrounds/paper-1.jpg);">
         <td style = "width:20%;height:250px; vertical-align: top;">
@@ -21,15 +21,12 @@
                 <tr><td><a href="index.php?action=hall"><H3> "Зал славы" </H3></a> <hr/> </td></tr>
                 <tr><td><a href="index.php?action=contacts"><H3> Контакты </H3></a> <hr/> </td></tr>
             </table> </td>
-        <td style = "height:525px;"><H2 align = "center">  Акции </H2>
-            <?php if (!empty($messages)): ?>
-                <?php foreach ($messages as $message): ?>
-                    <div class="message">
-                        <h2>Акция от <?= $message['date'] ?></h2>
-                        <div> <p> <?= htmlspecialchars($message['message']); ?></p></div>
-                    </div>
-                <?php endforeach ?>
-            <?php endif ?>
+        <td style = "height:525px;"><H2 align = "center"> Контакты </H2>
+            <table> <tr> <td> <img src="https://pp.vk.me/c629307/v629307904/263ae/svLLRyEOXl4.jpg" height="400px" width="270px"> </td>
+            <td> <p> <b> Нажмите для перехода: </b> </p>
+               <p> <a href="https://vk.com/anastasiyashez"> Личная страница мастера </a> </p>
+            <p> <a href "https://vk.com/lastochka_anastasiya"> Публичная страница мастерской в Vk </a></p></td> </tr> </table>
+            <a href="index.php?action=home"><p align="right">На главную </p></a>
     <tr>
         <td colspan = "2" align = "center"> <H4> <b> (c) Коновалова Александра 2016 </b> </H4> </td>
     </tr>

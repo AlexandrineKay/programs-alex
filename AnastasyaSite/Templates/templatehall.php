@@ -19,7 +19,7 @@
                 <tr><td><a href="index.php?action=order"><H3> На заказ </H3> </a><hr/> </td></tr>
                 <tr><td><a href="index.php?action=review"><H3> Отзывы </H3></a> <hr/> </td></tr>
                 <tr><td><a href="index.php?action=hall"><H3> "Зал славы" </H3></a> <hr/> </td></tr>
-                <tr><td><H3> Контакты </H3> <hr/> </td></tr>
+                <tr><td><a href="index.php?action=contacts"><H3> Контакты </H3></a> <hr/> </td></tr>
             </table> </td>
         <td style = "height:525px;"><H2 align = "center">  "Зал Славы" </H2>
             <?php if (!empty($halls)): ?>
@@ -27,7 +27,7 @@
                     <div class="message">
                         <h2>Почётный заказчик № <?= $hall['id'] ?></h2>
                        <table><tr><td rowspan = "2"><img src="<?= $hall['hall_picture'];?>" width="150" height="200"></td>
-                              <td><div><p align="center"> <b><?= htmlspecialchars($hall['hall_name']); ?></b></p></div></td>
+                              <td><div><p align="center"> <b><?= htmlspecialchars($hall['hall_name']); ?></b></p></div></td></tr>
                               <tr><td><div><p><?= htmlspecialchars($hall['hall_description']); ?></p></div></td></tr></table>
                     </div>
                 <?php endforeach ?>
