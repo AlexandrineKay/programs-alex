@@ -50,7 +50,7 @@
                         <p><input type="checkbox" name="formDoor[]" value="2"> Колье и кулоны </p>
                         <p><input type="checkbox" name="formDoor[]" value="3"> Кольца </p>
                         <p><input type="checkbox" name="formDoor[]" value="4"> Броши </p>
-                        <p><input type="checkbox" name="formDoor[]" value="5"> Другое </p>
+                        <p><input type="checkbox" name="formDoor[]" value="5"> Серьги </p>
                         <p><input type="submit" name="formSubmit" value="Применить"></p> <hr/> </td></tr>
             </table> </td>
         <td style = "height:525px;"><H2 align = "center"> Товары </H2>

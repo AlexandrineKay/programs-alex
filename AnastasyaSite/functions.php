@@ -117,8 +117,8 @@ function load_reviews(\PDO $connection, $review_id = null, $per_page, $page)
     }
     return
         $review_id === null
-            ? $connection->query("SELECT r.`id`,r.`date`, r. `user_name`, r.`title`, r.`message` FROM `reviews`  r ORDER BY r.`date` DESC LIMIT {$start},{$per_page}")->fetchAll()
-            : $connection->query("SELECT r.`id`,r.`date`, r. `user_name`, r.`title`, r.`message` FROM `reviews`  r  WHERE r.`id`={$review_id}")->fetchAll();
+            ? $connection->query("SELECT r.`id`,r.`date`, r. `user_name`,  r.`message` FROM `reviews`  r ORDER BY r.`date` DESC")->fetchAll()
+            : $connection->query("SELECT r.`id`,r.`date`, r. `user_name`, r.`message` FROM `reviews`  r  WHERE r.`id`={$review_id}")->fetchAll();
 }
 function insert_review(\PDO $connection, $review, $user)
 {
@@ -140,7 +140,7 @@ function load_halls(\PDO $connection, $hall_id = null, $per_page, $page)
     }
     return
         $hall_id === null
-            ? $connection->query("SELECT h.`id`,h.`hall_name`, h. `hall_picture`, h.`hall_description` FROM `hall`  h  LIMIT {$start},{$per_page}")->fetchAll()
+            ? $connection->query("SELECT h.`id`,h.`hall_name`, h. `hall_picture`, h.`hall_description` FROM `hall`  h ")->fetchAll()
             : $connection->query("SELECT h.`id`,h.`hall_name`, h. `hall_picture`, h.`hall_description` FROM `hall`  h WHERE h.`id`={$hall_id}")->fetchAll();
 }
 function load_br(\PDO $connection, $good_id = null, $per_page, $page)
@@ -203,16 +203,16 @@ function load_dr(\PDO $connection, $good_id = null, $per_page, $page)
             ? $connection->query("SELECT g.`id`,g.`title`, g. `price`, g.`description`, g.`picture`, g.`categ_id` FROM `goods`  g WHERE g.`categ_id`= 5 ORDER BY  g.`price` ASC LIMIT {$start},{$per_page}")->fetchAll()
             : $connection->query("SELECT g.`categ`,g.`title`,g.`id` FROM `goods` g WHERE g.`id`={$good_id} ORDER BY g.`price` DESC")->fetchAll();
 }
-function load_goods(\PDO $connection, $good_id = null, $per_page, $page)
+function load_goods(\PDO $connection, $good_id = null)
 {
     //$user = user();
-    $start = $page * $per_page;
+    //$start = $page * $per_page;
     if ($good_id !== null) {
         $good_id = (int)$good_id;
     }
     return
         $good_id === null
-            ? $connection->query("SELECT g.`id`,g.`title`, g. `price`, g.`description`, g.`picture`, g.`categ_id` FROM `goods`  g  ORDER BY  g.`price` ASC LIMIT {$start},{$per_page}")->fetchAll()
+            ? $connection->query("SELECT g.`id`,g.`title`, g. `price`, g.`description`, g.`picture`, g.`categ_id` FROM `goods`  g  ORDER BY  g.`price` ASC")->fetchAll()
             : $connection->query("SELECT g.`categ`,g.`title`,g.`id` FROM `goods` g WHERE g.`id`={$good_id} ORDER BY g.`price` DESC")->fetchAll();
 }
 
@@ -225,7 +225,7 @@ function load_messages(\PDO $connection, $message_id = null, $user, $per_page, $
     }
     return
         $message_id === null
-            ? $connection->query("SELECT n.`date`,n.`message`, n.`id` FROM `news`  n  ORDER BY  n.`date` DESC LIMIT {$start},{$per_page}")->fetchAll()
+            ? $connection->query("SELECT n.`date`,n.`message`, n.`id` FROM `news`  n  ORDER BY  n.`date` DESC}")->fetchAll()
             : $connection->query("SELECT n.`date`,n.`message`,n.`id` FROM `news` n WHERE n.`id`={$message_id} ORDER BY n.`date` DESC")->fetchAll();
 }
 function routes($uri, $routes)

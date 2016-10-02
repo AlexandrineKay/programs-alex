@@ -26,8 +26,7 @@
                 <?php foreach ($reviews as $review): ?>
                     <div class="message">
                         <h2>Отзыв № <?= $review['id'] ?> от <?= htmlspecialchars($review['date']); ?></h2>
-                        <table><tr><td><p><b><?= $review['title'];?></b></p></td></tr>
-                               <tr><td><div><p><?= htmlspecialchars($review['message']); ?></p></div></td></tr>
+                        <table><tr><td><div><p><?= htmlspecialchars($review['message']); ?></p></div></td></tr>
                             <tr><td><div> <p align="right"> <?= htmlspecialchars($review['user_name']); ?></p></div></td></tr></table>
                     </div>
                 <?php endforeach ?>
