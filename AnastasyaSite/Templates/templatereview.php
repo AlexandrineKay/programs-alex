@@ -33,7 +33,7 @@
             <?php if (!empty($reviews)): ?>
                 <?php foreach ($reviews as $review): ?>
                     <div class="message">
-                        <h2>Отзыв № <?= $review['id'] ?> от <?= htmlspecialchars($review['date']); ?></h2>
+                        <h2>Отзыв от <?= htmlspecialchars($review['date']); ?></h2>
                         <table><tr><td><div><p><?= htmlspecialchars($review['message']); ?></p></div></td></tr>
                             <tr><td><div> <p align="right"> <?= htmlspecialchars($review['user_name']); ?></p></div></td></tr></table>
                     </div>
